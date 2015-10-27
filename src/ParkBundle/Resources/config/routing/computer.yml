@@ -1,0 +1,7 @@
+computer:
+    path:     /
+    defaults: { _controller: "ParkBundle:Computer:index" }
+
+computer_debug:
+    path:     /debug
+    defaults: { _controller: "ParkBundle:Computer:debug" }

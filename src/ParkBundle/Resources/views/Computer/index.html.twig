@@ -1,0 +1,45 @@
+{% extends 'ParkBundle::base.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Computer list
+{% endblock %}
+
+{% block body -%}
+
+    <div class="page-header">
+        <h1>Computer list</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped">
+
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Ip</th>
+                        <th>Enabled</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                {% for computer in computers %}
+                    <tr>
+                        <td>{{ computer.id }}</td>
+                        <td>{{ computer.name }}</td>
+                        <td>{{ computer.ip }}</td>
+                        <td>{{ computer.enabled|computer_status }}</td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="6">No computer found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+{% endblock %}
