@@ -3,3 +3,7 @@ services:
         class: ParkBundle\Twig\ComputerStatusExtension
         tags:
             - { name: twig.extension }
+
+    park.computer_manager:
+        class: ParkBundle\Service\ComputerManager
+        arguments: ["@doctrine.orm.default_entity_manager"]

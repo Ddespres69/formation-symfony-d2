@@ -27,12 +27,8 @@ class ComputerController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('ParkBundle:Computer')->findAll();
-
         return array(
-            'entities' => $entities,
+            'entities' => $this->get('park.computer_manager')->getComputers()
         );
     }
     /**
@@ -49,7 +45,7 @@ class ComputerController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+            $em = $this->get('park.computer_manager')->getEntityManager();
             $em->persist($entity);
             $em->flush();
 
@@ -108,9 +104,7 @@ class ComputerController extends Controller
      */
     public function showAction($id)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('ParkBundle:Computer')->find($id);
+        $entity = $this->get('park.computer_manager')->getComputer($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Computer entity.');
@@ -133,9 +127,7 @@ class ComputerController extends Controller
      */
     public function editAction($id)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('ParkBundle:Computer')->find($id);
+        $entity = $this->get('park.computer_manager')->getComputer($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Computer entity.');
@@ -178,9 +170,8 @@ class ComputerController extends Controller
      */
     public function updateAction(Request $request, $id)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('ParkBundle:Computer')->find($id);
+        $em = $this->get('park.computer_manager')->getEntityManager();
+        $entity = $this->get('park.computer_manager')->getComputer($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Computer entity.');
@@ -214,8 +205,8 @@ class ComputerController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('ParkBundle:Computer')->find($id);
+            $em = $this->get('park.computer_manager')->getEntityManager();
+            $entity = $this->get('park.computer_manager')->getComputer($id);
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Computer entity.');
