@@ -1,3 +1,0 @@
-park_computer:
-    resource: "@ParkBundle/Resources/config/routing/computer.yml"
-    prefix:   /computer

@@ -113,7 +113,7 @@ class Person
      * @param \ParkBundle\Computer $computers
      * @return Person
      */
-    public function addComputer(\ParkBundle\Computer $computers)
+    public function addComputer(\ParkBundle\Entity\Computer $computers)
     {
         $this->computers[] = $computers;
 
@@ -125,7 +125,7 @@ class Person
      *
      * @param \ParkBundle\Computer $computers
      */
-    public function removeComputer(\ParkBundle\Computer $computers)
+    public function removeComputer(\ParkBundle\Entity\Computer $computers)
     {
         $this->computers->removeElement($computers);
     }
@@ -138,5 +138,9 @@ class Person
     public function getComputers()
     {
         return $this->computers;
+    }
+
+    public function __toString() {
+        return $this->firstName . ' ' . $this->lastName;
     }
 }
