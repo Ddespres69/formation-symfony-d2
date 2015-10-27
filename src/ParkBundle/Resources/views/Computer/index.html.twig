@@ -10,6 +10,7 @@
                 <th>Name</th>
                 <th>Ip</th>
                 <th>Enabled</th>
+                <th>Person</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -20,6 +21,7 @@
                 <td>{{ entity.name }}</td>
                 <td>{{ entity.ip }}</td>
                 <td>{{ entity.enabled }}</td>
+                <td>{{ entity.person | default ('no.affectation') }}</td>
                 <td>
                 <ul>
                     <li>

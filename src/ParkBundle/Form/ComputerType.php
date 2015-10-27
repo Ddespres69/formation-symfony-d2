@@ -17,11 +17,12 @@ class ComputerType extends AbstractType
         $builder
             ->add('name')
             ->add('ip')
-            ->add('enabled')
-            ->add('person')
-        ;
+            ->add('enabled',
+                'checkbox',
+                array('required' => false))
+            ->add('person');
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */
