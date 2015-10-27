@@ -42,7 +42,11 @@ class Computer
      */
     private $enabled;
 
-
+    /**
+     * @ORM\ManyToOne(targetEntity="ParkBundle\Entity\Person", inversedBy="computers", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $person;
 
 
     /**
@@ -123,5 +127,28 @@ class Computer
     public function getEnabled()
     {
         return $this->enabled;
+    }
+
+    /**
+     * Set person
+     *
+     * @param \ParkBundle\Person $person
+     * @return Computer
+     */
+    public function setPerson(\ParkBundle\Entity\Person $person = null)
+    {
+        $this->person = $person;
+
+        return $this;
+    }
+
+    /**
+     * Get person
+     *
+     * @return \ParkBundle\Person
+     */
+    public function getPerson()
+    {
+        return $this->person;
     }
 }
