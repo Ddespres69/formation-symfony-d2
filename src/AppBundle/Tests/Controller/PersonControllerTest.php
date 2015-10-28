@@ -1,6 +1,6 @@
 <?php
 
-namespace ParkBundle\Tests\Controller;
+namespace ApBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
@@ -19,7 +19,7 @@ class PersonControllerTest extends WebTestCase
 
         // Fill in the form and submit it
         $form = $crawler->selectButton('Create')->form(array(
-            'parkbundle_person[field_name]'  => 'Test',
+            'appbundle_person[field_name]'  => 'Test',
             // ... other fields to fill
         ));
 
@@ -33,7 +33,7 @@ class PersonControllerTest extends WebTestCase
         $crawler = $client->click($crawler->selectLink('Edit')->link());
 
         $form = $crawler->selectButton('Update')->form(array(
-            'parkbundle_person[field_name]'  => 'Foo',
+            'appbundle_person[field_name]'  => 'Foo',
             // ... other fields to fill
         ));
 

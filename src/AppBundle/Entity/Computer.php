@@ -1,6 +1,6 @@
 <?php
 
-namespace ParkBundle\Entity;
+namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Computer
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="ParkBundle\Entity\ComputerRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\ComputerRepository")
  */
 class Computer
 {
@@ -43,7 +43,7 @@ class Computer
     private $enabled;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ParkBundle\Entity\Person", inversedBy="computers", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Person", inversedBy="computers", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
      */
     private $person;
@@ -132,10 +132,10 @@ class Computer
     /**
      * Set person
      *
-     * @param \ParkBundle\Person $person
+     * @param \AppBundle\Person $person
      * @return Computer
      */
-    public function setPerson(\ParkBundle\Entity\Person $person = null)
+    public function setPerson(\AppBundle\Entity\Person $person = null)
     {
         $this->person = $person;
 
@@ -145,7 +145,7 @@ class Computer
     /**
      * Get person
      *
-     * @return \ParkBundle\Person
+     * @return \AppBundle\Person
      */
     public function getPerson()
     {

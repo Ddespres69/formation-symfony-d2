@@ -3,5 +3,5 @@ app:
     prefix:   /
 
 park:
-    resource: "@ParkBundle/controller"
+    resource: "@AppBundle/controller"
     prefix:   /park

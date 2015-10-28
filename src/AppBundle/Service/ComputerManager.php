@@ -1,6 +1,6 @@
 <?php
 
-namespace ParkBundle\Service;
+namespace AppBundle\Service;
 
 use Doctrine\ORM\EntityManager;
 
@@ -23,7 +23,7 @@ Class ComputerManager
      */
     public function getComputers()
     {
-        return $this->em->getRepository('ParkBundle:Computer')->findAll();
+        return $this->em->getRepository('AppBundle:Computer')->findAll();
     }
 
     /**
@@ -32,7 +32,7 @@ Class ComputerManager
      */
     public function getComputer($id)
     {
-        return $this->em->getRepository('ParkBundle:Computer')->find($id);
+        return $this->em->getRepository('AppBundle:Computer')->find($id);
     }
 
 

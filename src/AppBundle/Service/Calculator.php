@@ -1,6 +1,6 @@
 <?php
 
-namespace ParkBundle\Service;
+namespace AppBundle\Service;
 
 
 Class Calculator

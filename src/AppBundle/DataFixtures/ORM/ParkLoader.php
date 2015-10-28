@@ -1,13 +1,13 @@
 <?php
 
-namespace ParkBundle\DataFixtures\ORM;
+namespace AppBundle\DataFixtures\ORM;
 
 use Hautelook\AliceBundle\Alice\DataFixtureLoader;
 use Nelmio\Alice\Fixtures;
 
 /**
  * Class ParkLoader
- * @package ParkBundle\DataFixtures\ORM
+ * @package AppBundle\DataFixtures\ORM
  */
 class ParkLoader extends DataFixtureLoader
 {

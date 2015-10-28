@@ -1,5 +1,5 @@
 <?php
-namespace ParkBundle\Command;
+namespace AppBundle\Command;
 
 use Doctrine\Common\Proxy\Exception\InvalidArgumentException;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
@@ -13,7 +13,7 @@ class ComputerToogleCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('park:computer:toggle')
+            ->setName('app:computer:toggle')
             ->setDescription('Computers Enable/Disable')
             ->addArgument(
                 'action',
@@ -37,7 +37,7 @@ class ComputerToogleCommand extends ContainerAwareCommand
 
         $em = $this->getContainer()->get('doctrine')->getManager();
 
-        foreach ($em->getRepository('ParkBundle:Computer')->findAll() as $computer) {
+        foreach ($em->getRepository('AppBundle:Computer')->findAll() as $computer) {
             $computer->setEnabled($enabled);
             $em->persist($computer);
         }

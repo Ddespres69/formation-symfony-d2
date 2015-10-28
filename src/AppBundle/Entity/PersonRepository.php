@@ -1,6 +1,6 @@
 <?php
 
-namespace ParkBundle\Entity;
+namespace AppBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
 

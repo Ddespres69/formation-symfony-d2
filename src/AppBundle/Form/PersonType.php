@@ -1,6 +1,6 @@
 <?php
 
-namespace ParkBundle\Form;
+namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -26,7 +26,7 @@ class PersonType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'ParkBundle\Entity\Person'
+            'data_class' => 'AppBundle\Entity\Person'
         ));
     }
 
@@ -35,6 +35,6 @@ class PersonType extends AbstractType
      */
     public function getName()
     {
-        return 'parkbundle_person';
+        return 'appbundle_person';
     }
 }

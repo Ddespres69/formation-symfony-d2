@@ -1,6 +1,6 @@
 <?php
 
-namespace ParkBundle\Form;
+namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -29,7 +29,7 @@ class ComputerType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'ParkBundle\Entity\Computer'
+            'data_class' => 'AppBundle\Entity\Computer'
         ));
     }
 
@@ -38,6 +38,6 @@ class ComputerType extends AbstractType
      */
     public function getName()
     {
-        return 'parkbundle_computer';
+        return 'appbundle_computer';
     }
 }

@@ -1,59 +1,55 @@
 <?php
 
-namespace ParkBundle\Controller;
+namespace AppBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use ParkBundle\Entity\Person;
-use ParkBundle\Form\PersonType;
+use AppBundle\Entity\Computer;
+use AppBundle\Form\ComputerType;
 
 /**
- * Person controller.
+ * Computer controller.
  *
- * @Route("/person")
+ * @Route("/computer")
  */
-class PersonController extends Controller
+class ComputerController extends Controller
 {
 
     /**
-     * Lists all Person entities.
+     * Lists all Computer entities.
      *
-     * @Route("/", name="person")
+     * @Route("/", name="computer")
      * @Method("GET")
      * @Template()
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('ParkBundle:Person')->findAll();
-
         return array(
-            'entities' => $entities,
+            'entities' => $this->get('app.computer_manager')->getComputers()
         );
     }
     /**
-     * Creates a new Person entity.
+     * Creates a new Computer entity.
      *
-     * @Route("/", name="person_create")
+     * @Route("/", name="computer_create")
      * @Method("POST")
-     * @Template("ParkBundle:Person:new.html.twig")
+     * @Template("AppBundle:Computer:new.html.twig")
      */
     public function createAction(Request $request)
     {
-        $entity = new Person();
+        $entity = new Computer();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+            $em = $this->get('app.computer_manager')->getEntityManager();
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('person_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('computer_show', array('id' => $entity->getId())));
         }
 
         return array(
@@ -63,16 +59,16 @@ class PersonController extends Controller
     }
 
     /**
-     * Creates a form to create a Person entity.
+     * Creates a form to create a Computer entity.
      *
-     * @param Person $entity The entity
+     * @param Computer $entity The entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Person $entity)
+    private function createCreateForm(Computer $entity)
     {
-        $form = $this->createForm(new PersonType(), $entity, array(
-            'action' => $this->generateUrl('person_create'),
+        $form = $this->createForm(new ComputerType(), $entity, array(
+            'action' => $this->generateUrl('computer_create'),
             'method' => 'POST',
         ));
 
@@ -82,15 +78,15 @@ class PersonController extends Controller
     }
 
     /**
-     * Displays a form to create a new Person entity.
+     * Displays a form to create a new Computer entity.
      *
-     * @Route("/new", name="person_new")
+     * @Route("/new", name="computer_new")
      * @Method("GET")
      * @Template()
      */
     public function newAction()
     {
-        $entity = new Person();
+        $entity = new Computer();
         $form   = $this->createCreateForm($entity);
 
         return array(
@@ -100,20 +96,18 @@ class PersonController extends Controller
     }
 
     /**
-     * Finds and displays a Person entity.
+     * Finds and displays a Computer entity.
      *
-     * @Route("/{id}", name="person_show")
+     * @Route("/{id}", name="computer_show")
      * @Method("GET")
      * @Template()
      */
     public function showAction($id)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('ParkBundle:Person')->find($id);
+        $entity = $this->get('app.computer_manager')->getComputer($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Person entity.');
+            throw $this->createNotFoundException('Unable to find Computer entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -125,20 +119,18 @@ class PersonController extends Controller
     }
 
     /**
-     * Displays a form to edit an existing Person entity.
+     * Displays a form to edit an existing Computer entity.
      *
-     * @Route("/{id}/edit", name="person_edit")
+     * @Route("/{id}/edit", name="computer_edit")
      * @Method("GET")
      * @Template()
      */
     public function editAction($id)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('ParkBundle:Person')->find($id);
+        $entity = $this->get('app.computer_manager')->getComputer($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Person entity.');
+            throw $this->createNotFoundException('Unable to find Computer entity.');
         }
 
         $editForm = $this->createEditForm($entity);
@@ -152,16 +144,16 @@ class PersonController extends Controller
     }
 
     /**
-    * Creates a form to edit a Person entity.
+    * Creates a form to edit a Computer entity.
     *
-    * @param Person $entity The entity
+    * @param Computer $entity The entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(Person $entity)
+    private function createEditForm(Computer $entity)
     {
-        $form = $this->createForm(new PersonType(), $entity, array(
-            'action' => $this->generateUrl('person_update', array('id' => $entity->getId())),
+        $form = $this->createForm(new ComputerType(), $entity, array(
+            'action' => $this->generateUrl('computer_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -170,20 +162,19 @@ class PersonController extends Controller
         return $form;
     }
     /**
-     * Edits an existing Person entity.
+     * Edits an existing Computer entity.
      *
-     * @Route("/{id}", name="person_update")
+     * @Route("/{id}", name="computer_update")
      * @Method("PUT")
-     * @Template("ParkBundle:Person:edit.html.twig")
+     * @Template("AppBundle:Computer:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('ParkBundle:Person')->find($id);
+        $em = $this->get('app.computer_manager')->getEntityManager();
+        $entity = $this->get('app.computer_manager')->getComputer($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Person entity.');
+            throw $this->createNotFoundException('Unable to find Computer entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -193,7 +184,7 @@ class PersonController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('person_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('computer_edit', array('id' => $id)));
         }
 
         return array(
@@ -203,9 +194,9 @@ class PersonController extends Controller
         );
     }
     /**
-     * Deletes a Person entity.
+     * Deletes a Computer entity.
      *
-     * @Route("/{id}", name="person_delete")
+     * @Route("/{id}", name="computer_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
@@ -214,22 +205,22 @@ class PersonController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('ParkBundle:Person')->find($id);
+            $em = $this->get('app.computer_manager')->getEntityManager();
+            $entity = $this->get('app.computer_manager')->getComputer($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Person entity.');
+                throw $this->createNotFoundException('Unable to find Computer entity.');
             }
 
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('person'));
+        return $this->redirect($this->generateUrl('computer'));
     }
 
     /**
-     * Creates a form to delete a Person entity by id.
+     * Creates a form to delete a Computer entity by id.
      *
      * @param mixed $id The entity id
      *
@@ -238,7 +229,7 @@ class PersonController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('person_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('computer_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()

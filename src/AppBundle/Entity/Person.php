@@ -1,6 +1,6 @@
 <?php
 
-namespace ParkBundle\Entity;
+namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Person
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="ParkBundle\Entity\PersonRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\PersonRepository")
  */
 class Person
 {
@@ -37,7 +37,7 @@ class Person
 
     /**
      *
-     * @ORM\OneToMany(targetEntity="ParkBundle\Entity\Computer", mappedBy="person")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Computer", mappedBy="person")
      * @ORM\JoinColumn(nullable=true)
      */
     private $computers;
@@ -110,10 +110,10 @@ class Person
     /**
      * Add computers
      *
-     * @param \ParkBundle\Computer $computers
+     * @param \AppBundle\Computer $computers
      * @return Person
      */
-    public function addComputer(\ParkBundle\Entity\Computer $computers)
+    public function addComputer(\AppBundle\Entity\Computer $computers)
     {
         $this->computers[] = $computers;
 
@@ -123,9 +123,9 @@ class Person
     /**
      * Remove computers
      *
-     * @param \ParkBundle\Computer $computers
+     * @param \AppBundle\Computer $computers
      */
-    public function removeComputer(\ParkBundle\Entity\Computer $computers)
+    public function removeComputer(\AppBundle\Entity\Computer $computers)
     {
         $this->computers->removeElement($computers);
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace ParkBundle\Controller;
+namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -26,13 +26,13 @@ class CalculatorController extends Controller
      *     "v1": "\d+", "v2": "\d+"
      * })
      * @Method("GET")
-     * @Template("ParkBundle:Calculator:show.html.twig")
+     * @Template("AppBundle:Calculator:show.html.twig")
      */
 
     public function sumAction($v1, $v2)
     {
 
-        $calc = $this->get('park.calculator');
+        $calc = $this->get('app.calculator');
 
 
         return array('result' => $calc->makeSum($v1, $v2));

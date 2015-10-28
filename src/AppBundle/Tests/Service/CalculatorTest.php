@@ -1,8 +1,8 @@
 <?php
 
-namespace ParkBundle\Tests\Service;
+namespace AppBundle\Tests\Service;
 
-use ParkBundle\Service\Calculator;
+use AppBundle\Service\Calculator;
 
 class CalculatorTest extends \PHPUnit_Framework_TestCase
 

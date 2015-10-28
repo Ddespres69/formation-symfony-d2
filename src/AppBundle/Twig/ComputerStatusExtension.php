@@ -1,10 +1,10 @@
 <?php
 
-namespace ParkBundle\Twig;
+namespace AppBundle\Twig;
 
 /**
  * Class ComputerStatusExtension
- * @package ParkBundle\Twig
+ * @package AppBundle\Twig
  */
 class ComputerStatusExtension extends \Twig_Extension
 {
@@ -18,7 +18,7 @@ class ComputerStatusExtension extends \Twig_Extension
     {
         //return processed template content
         return $env->render(
-            'ParkBundle:Computer:Status/index.html.twig',
+            'AppBundle:Computer:Status/index.html.twig',
             array(
                 'status' => (bool)$status,
             )
@@ -47,6 +47,6 @@ class ComputerStatusExtension extends \Twig_Extension
      */
     public function getName()
     {
-        return 'park_computer_status_extension';
+        return 'app_computer_status_extension';
     }
 }
