@@ -3,7 +3,7 @@
 namespace ParkBundle\Service;
 
 
-Class ComputerManager
+Class Calculator
 {
 
 
