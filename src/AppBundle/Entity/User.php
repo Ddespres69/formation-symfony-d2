@@ -13,6 +13,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class User
 {
+
+    const SALT = 'SALT';
+
     /**
      * @var integer
      *

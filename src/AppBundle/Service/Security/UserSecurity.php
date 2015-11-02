@@ -8,18 +8,15 @@ use AppBundle\Entity\User;
 
 Class UserSecurity
 {
-    const SALT = "TOTOCHE";
-
     public function prePersist(LifecycleEventArgs $args)
     {
         $entity = $args->getEntity();
 
-        // perhaps you only want to act on some "Product" entity
+        // perhaps you only want to act on some "User" entity
         if ($entity instanceof User) {
-            // ... do something with the Product
+            // ... do something with the User
             $entity->setPassword($entity->getPlainPassword());
-            $entity->setSalt(self::SALT);
+            $entity->setSalt($entity::SALT);
         }
     }
-
 }
