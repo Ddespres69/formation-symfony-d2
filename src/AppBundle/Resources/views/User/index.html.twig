@@ -5,16 +5,16 @@
 
     <table class="records_list">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Username</th>
-                <th>Password</th>
-                <th>Name</th>
-                <th>Firstname</th>
-                <th>Roles</th>
-                <th>Enabled</th>
-                <th>Actions</th>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Name</th>
+            <th>Firstname</th>
+            <th>Roles</th>
+            <th>Enabled</th>
+            <th>Actions</th>
+        </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
@@ -26,32 +26,32 @@
                 <td>{{ entity.firstname }}</td>
                 <td>
                     {% for role in entity.roles %}
-                    {{ role }} <br/>
+                        {{ role }} <br/>
                     {% else %}
                         {{ 'roles.affected.no' | trans }}
                     {% endfor %}
                 </td>
                 <td>{{ entity.enabled }}</td>
                 <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('user_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('user_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
+                    <ul>
+                        <li>
+                            <a href="{{ path('user_show', { 'id': entity.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('user_edit', { 'id': entity.id }) }}">edit</a>
+                        </li>
+                    </ul>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-        <ul>
+    <ul>
         <li>
             <a href="{{ path('user_new') }}">
                 Create a new entry
             </a>
         </li>
     </ul>
-    {% endblock %}
+{% endblock %}
