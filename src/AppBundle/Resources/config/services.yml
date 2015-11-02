@@ -16,3 +16,8 @@ services:
         arguments: [@security.authorization_checker]
         tags:
             - { name: twig.extension }
+
+    app.security.user:
+        class: AppBundle\Service\Security\UserSecurity
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }

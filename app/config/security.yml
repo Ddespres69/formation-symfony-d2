@@ -17,8 +17,9 @@ security:
                     admin: { password: admin, roles: [ 'ROLE_ADMIN' ] }
                     superadmin: { password: superadmin, roles: [ 'ROLE_SUPER_ADMIN' ] }
 
+
     encoders:
-        Symfony\Component\Security\Core\User\User: plaintext
+        Symfony\Component\Security\Core\User\User: SHA512
 
     firewalls:
 
