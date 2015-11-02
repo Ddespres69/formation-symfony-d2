@@ -13,7 +13,7 @@ use AppBundle\Form\PersonType;
 /**
  * Person controller.
  *
- * @Route("/person")
+ * @Route("/park/person")
  */
 class PersonController extends Controller
 {

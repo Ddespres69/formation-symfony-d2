@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 /**
  * Class DefaultController
@@ -12,7 +13,10 @@ class DefaultController extends Controller
 {
 
     /**
+     * @Route("/", name="app_homepage")
      * @return \Symfony\Component\HttpFoundation\Response
+     *
+     *
      */
     public function indexAction()
     {

@@ -13,7 +13,7 @@ use AppBundle\Form\ComputerType;
 /**
  * Computer controller.
  *
- * @Route("/computer")
+ * @Route("/park/computer")
  */
 class ComputerController extends Controller
 {

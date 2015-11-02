@@ -1,7 +1,3 @@
 app:
-    resource: "@AppBundle/Resources/config/routing.yml"
-    prefix:   /
-
-park:
     resource: "@AppBundle/controller"
-    prefix:   /park
+    prefix:   /
