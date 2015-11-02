@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * User
@@ -11,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="AppBundle\Entity\UserRepository")
  *
  */
-class User
+class User implements UserInterface
 {
 
     const SALT = 'SALT';
@@ -42,7 +43,6 @@ class User
     /**
      * @var string
      *
-     * @ORM\Column(name="plainPassword", type="text")
      */
     private $plainPassword;
 
@@ -59,13 +59,6 @@ class User
      * @ORM\Column(name="firstname", type="string", length=255)
      */
     private $firstname;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="salt", type="string", length=255)
-     */
-    private $salt;
 
     /**
      * @var string
@@ -208,26 +201,13 @@ class User
     }
 
     /**
-     * Set salt
-     *
-     * @param string $salt
-     * @return User
-     */
-    public function setSalt($salt)
-    {
-        $this->salt = $salt;
-
-        return $this;
-    }
-
-    /**
      * Get salt
      *
      * @return string 
      */
     public function getSalt()
     {
-        return $this->salt;
+        return self::SALT;
     }
 
     /**
@@ -274,5 +254,12 @@ class User
     public function getEnabled()
     {
         return $this->enabled;
+    }
+
+    /**
+     *
+     */
+    public function eraseCredentials(){
+        $this->setPlainPassword(null);
     }
 }

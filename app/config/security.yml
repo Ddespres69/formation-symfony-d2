@@ -19,7 +19,8 @@ security:
 
 
     encoders:
-        Symfony\Component\Security\Core\User\User: SHA512
+        #Symfony\Component\Security\Core\User\User: SHA512
+        AppBundle\Entity\User: sha512
 
     firewalls:
 
