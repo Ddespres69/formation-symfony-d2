@@ -1,6 +1,6 @@
 <ul class="nav navbar-nav">
 
-    {% if app.user %}
+    {% if has_right('IS_AUTHENTICATED_REMEMBERED') %}
         <li>
             <a href="{{ path('app_homepage') }}"><span class="glyphicon glyphicon-home"></span> Home</a>
         </li>
@@ -25,8 +25,9 @@
 
 </ul>
 <ul class="nav navbar-right">
+
     <li class="">
-        {% if app.user %}
+        {% if has_right('IS_AUTHENTICATED_REMEMBERED') %}
             <a href="{{ path('logout') }}">{{ app.user.username }} {{ 'security.log.out' }}</a>
         {% else %}
             <a href="{{ path('login') }}">{{ 'security.sign.in' }}</a>

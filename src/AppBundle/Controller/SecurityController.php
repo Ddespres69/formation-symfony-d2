@@ -50,6 +50,7 @@ class SecurityController extends Controller
      */
     public function loginCheckAction()
     {
+        throw new \RuntimeException('Security failed');
 
     }
 
@@ -61,7 +62,7 @@ class SecurityController extends Controller
      */
     public function logoutAction()
     {
-
+        throw new \RuntimeException('Security failed');
     }
 
 }

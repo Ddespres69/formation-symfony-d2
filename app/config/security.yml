@@ -3,7 +3,8 @@ security:
         connection: default
 
     role_hierarchy:
-        ROLE_ADMIN:       [ROLE_USER]
+        ROLE_MODERATOR:   [ROLE_USER]
+        ROLE_ADMIN:       [ROLE_MODERATOR]
         ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     providers:
@@ -11,6 +12,8 @@ security:
             memory:
                 users:
                     user:  { password: user, roles: [ 'ROLE_USER' ] }
+                    dddp:  { password: dddp, roles: [ 'ROLE_USER' ] }
+                    moderator:  { password: moderator, roles: [ 'ROLE_MODERATOR' ] }
                     admin: { password: admin, roles: [ 'ROLE_ADMIN' ] }
                     superadmin: { password: superadmin, roles: [ 'ROLE_SUPER_ADMIN' ] }
 
