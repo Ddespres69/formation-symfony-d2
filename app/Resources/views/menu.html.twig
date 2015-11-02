@@ -25,12 +25,14 @@
 
 </ul>
 <ul class="nav navbar-right">
-
     <li class="">
         {% if has_right('IS_AUTHENTICATED_REMEMBERED') %}
-            <a href="{{ path('logout') }}">{{ app.user.username }} {{ 'security.log.out' }}</a>
+            <a href="{{ path('logout') }}">{{ app.user.username }} {{ 'security.log.out' | trans }}</a>
+
+
+
         {% else %}
-            <a href="{{ path('login') }}">{{ 'security.sign.in' }}</a>
+            <a href="{{ path('login') }}">{{ 'security.sign.in' | trans }}</a>
         {% endif %}
     </li>
 </ul>
