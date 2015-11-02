@@ -17,13 +17,12 @@ security:
                     admin: { password: admin, roles: [ 'ROLE_ADMIN' ] }
                     superadmin: { password: superadmin, roles: [ 'ROLE_SUPER_ADMIN' ] }
 
-
         secured_provider:
-            entity : AppBundle\Entity\User
-            property: name
+            entity:
+                class: AppBundle\Entity\User
+                property: name
 
     encoders:
-        #Symfony\Component\Security\Core\User\User: SHA512
         AppBundle\Entity\User: sha512
 
     firewalls:
