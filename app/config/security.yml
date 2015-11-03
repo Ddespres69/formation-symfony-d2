@@ -20,7 +20,7 @@ security:
         secured_provider:
             entity:
                 class: AppBundle\Entity\User
-                property: name
+                property: username
 
     encoders:
         AppBundle\Entity\User: sha512
