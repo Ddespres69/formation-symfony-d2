@@ -1,3 +1,6 @@
+parameters:
+    app.security.user.class: AppBundle\Service\Security\UserSecurity
+
 services:
     app.twig.computer_status_extension:
         class: AppBundle\Twig\ComputerStatusExtension
@@ -18,7 +21,7 @@ services:
             - { name: twig.extension }
 
     app.security.user:
-        class: AppBundle\Service\Security\UserSecurity
+        class: %app.security.user.class%
         arguments: [@security.encoder_factory]
         tags:
             - { name: doctrine.event_listener, event: prePersist }
